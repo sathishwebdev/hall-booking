@@ -11,6 +11,8 @@ Create a endpoints to
     
 
 ## ENDPOINTS
+*   ### create Room
+    *   /create-room - method : POST
 
 *   ### To book
     
