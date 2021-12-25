@@ -331,14 +331,15 @@ app.get("/customers", (req, res) => {
 });
 
 app.get('/bookoftheday', (req, res)=>{
-  let date = new Date().toLocaleDateString()
+  let date = req.query.date
+  date = !date ? new Date().toLocaleDateString() : date
   res.send(bookings.filter(bookings => bookings.date === date)) // bookings on client booking date)
 })
 
-app.get('/bookoftheday/:day/:month/:year', (req, res)=>{
-  let date = `${req.params.day}/${req.params.month}/${req.params.year}`
-  res.send(bookings.filter(bookings => bookings.date === date))
-})
+// app.get('/bookoftheday/:day/:month/:year', (req, res)=>{
+//   let date = `${req.params.day}/${req.params.month}/${req.params.year}`
+//   res.send(bookings.filter(bookings => bookings.date === date))
+// })
 
 app.get('/', (req,res)=>{
   fs.readFile('index.html', 'utf-8', (err,data)=>{
