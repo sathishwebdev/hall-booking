@@ -336,11 +336,6 @@ app.get('/bookoftheday', (req, res)=>{
   res.send(bookings.filter(bookings => bookings.date === date)) // bookings on client booking date)
 })
 
-// app.get('/bookoftheday/:day/:month/:year', (req, res)=>{
-//   let date = `${req.params.day}/${req.params.month}/${req.params.year}`
-//   res.send(bookings.filter(bookings => bookings.date === date))
-// })
-
 app.get('/', (req,res)=>{
   fs.readFile('index.html', 'utf-8', (err,data)=>{
     err? res.send(err) : res.send(data)
