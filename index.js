@@ -322,6 +322,20 @@ app.post("/room/:id", (req, res) => {
   }
 });
 
+app.post('/create-room',(req, res)=>{
+  let roomData = req.body;
+  let makeRoom = {
+    id: `${roomData.numOfSeats}` + roomData.price * roomData.threshold,
+    ...roomData,
+    discount:0,
+    minPrice: roomData.threshold * roomData.price,
+    bookedData:[]
+  }
+  rooms.push(makeRoom)
+  res.send({status: true, room : makeRoom})
+
+})
+
 app.get("/bookings", (req, res) => {
   res.send(bookings);
 });
