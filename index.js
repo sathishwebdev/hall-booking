@@ -1,4 +1,5 @@
 import express from "express";
+import fs from "fs";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -339,5 +340,10 @@ app.get('/bookoftheday/:day/:month/:year', (req, res)=>{
   res.send(bookings.filter(bookings => bookings.date === date))
 })
 
+app.get('/', (req,res)=>{
+  fs.readFile('index.html', 'utf-8', (err,data)=>{
+    err? res.send(err) : res.send(data)
+  })
+})
 
 app.listen(PORT, () => console.log("Server Started at " + PORT));
