@@ -332,7 +332,7 @@ app.get("/customers", (req, res) => {
 
 app.get('/bookoftheday', (req, res)=>{
   let date = req.query.date
-  date = !date ? new Date().toLocaleDateString() : date
+  date = !date ? new Date().toLocaleDateString('en-in') : date
   console.log(date)
   res.send(bookings.filter(bookings => bookings.date === date)) // bookings on client booking date)
 })
